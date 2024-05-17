@@ -134,7 +134,7 @@ def I0_I1_I3(): # Função para calcular I0, I1 e I3
     print(f"{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
 
 def I0_I1_I2(): # Função para calcular I0, I1 e I2
-    I3 = Decimal(input(f"Digite o valor de {Fore.GREEN}I3 em {Fore.BLUE}W/cm²{Fore.RESET}: "))
+    I3 = Decimal(input(f"Digite o valor de {Fore.GREEN}I3{Fore.RESET} em {Fore.BLUE}W/cm²{Fore.RESET}: "))
     t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
     t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
     t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
