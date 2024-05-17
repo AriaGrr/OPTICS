@@ -105,7 +105,6 @@ def I0_I2_I3(): # Função para calcular I0, I2 e I3
     t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
     t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
 
-
     I0 = 2 * I1
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
     I3 = I2 * Decimal(math.cos(math.radians(t3 - t2))**2)
@@ -121,7 +120,6 @@ def I0_I1_I3(): # Função para calcular I0, I1 e I3
     t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
     t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
     t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
-
 
     I0 = 2 * I2 / Decimal(math.cos(math.radians(t2 - t1))**2)
     I1 = I0 / 2
