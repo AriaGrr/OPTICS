@@ -4,6 +4,7 @@
 # Henrique Hodel Babler, RA: 24123079-6;
 
 # Paralelo = Teta 0, se é teta x com a vertical, colocar apenas x
+# Luz incidente: a intensidade da luz não polarizada é I0
 
 # Bibliotecas
 import math
@@ -53,7 +54,7 @@ def I1_I2(): # Função para calcular I1 e I2
 
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
     print(f"\nO valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
+    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
     
 def I0_I2(): # Função para calcular I0 e I2
@@ -65,8 +66,8 @@ def I0_I2(): # Função para calcular I0 e I2
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
 
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
+    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
+    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
 
 def I0_I1(): # Função para calcular I0 e I1
@@ -74,12 +75,12 @@ def I0_I1(): # Função para calcular I0 e I1
     t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
     t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
 
-    I1 = 2 * I2 / Decimal(math.cos(math.radians(t2 - t1))**2)
-    I0 = I1 / 2
+    I0 = 2 * I2 / Decimal(math.cos(math.radians(t2 - t1))**2)
+    I1 = I0 / 2
 
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
+    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
+    print(f"O valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
 
 def I1_I2_I3(): # Função para calcular I1, I2 e I3
@@ -90,7 +91,6 @@ def I1_I2_I3(): # Função para calcular I1, I2 e I3
 
     I1 = I0 / 2
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
-    print(I2)
     I3 = I2 * Decimal(math.cos(math.radians(t3 - t2))**2)
 
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
@@ -117,7 +117,7 @@ def I0_I2_I3(): # Função para calcular I0, I2 e I3
     print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
 
 def I0_I1_I3(): # Função para calcular I0, I1 e I3
-    I2 = Decimal(input(f"Digite o valor de {Fore.GREEN}I2 em {Fore.BLUE}W/cm²{Fore.RESET}: "))
+    I2 = Decimal(input(f"Digite o valor de {Fore.GREEN}I2{Fore.RESET} em {Fore.BLUE}W/cm²{Fore.RESET}: "))
     t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
     t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
     t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
