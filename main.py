@@ -263,7 +263,7 @@ while True:
         print(f"{Fore.BLUE}✔{Fore.RESET} Henrique Hodel Babler, {Fore.MAGENTA}RA:{Fore.RESET} 24123079-6")
         print(f"{Fore.MAGENTA}!{Fore.RESET} Turma {Fore.MAGENTA}725")
         print(f"{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-        print(f"{Fore.YELLOW}ℹ️{Fore.RESET} Texto explicativo...")
+        print(f"{Fore.YELLOW}ℹ️{Fore.RESET} O programa desenvolvido permite calcular a intensidade da luz após passar por polarizadores em um sistema óptico. Utilizando os ângulos de transmissão fornecidos pelo usuário, ele determina como a intensidade da luz não polarizada inicial é modificada ao atravessar até três polarizadores. Através de fórmulas baseadas nas leis de Malus e na física da polarização da luz, o programa calcula e exibe as intensidades resultantes, ajudando a entender o comportamento da luz em sistemas de polarização.")
         print(f"{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
         print(f'Pressione {Fore.GREEN}Enter{Fore.RESET} para continuar...')
         input() 
