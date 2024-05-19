@@ -5,6 +5,8 @@
 
 # Paralelo = Teta 0, se é teta x com a vertical, colocar apenas x
 # Luz incidente: a intensidade da luz não polarizada é I0
+# Vertical = 0 |
+# Horizontal = 90 _ 
 
 # Bibliotecas
 import math
