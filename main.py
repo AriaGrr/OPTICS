@@ -7,11 +7,15 @@
 # Luz incidente: a intensidade da luz não polarizada é I0
 # Vertical = 0 |
 # Horizontal = 90 _ 
+# Formula: I = I0 * cos²(teta)
+# I0 = 2 * I1
+# Formula: I = I1 * cos²(teta2 - teta1)
+# I1 = I0 / 2
+# Lei de Malus: I = I0 * cos²(teta2 - teta1)
 
 # Bibliotecas
 import math
 from decimal import Decimal
-from colorama import Fore, Style
 
 # Variaveis globais
 
@@ -41,142 +45,142 @@ def clear_screen(): # Função para limpar a tela do terminal
     print('\033[H\033[J')
 
 def clear(): # Função para pause
-    input(f'Pressione {Fore.GREEN}Enter{Fore.RESET} para continuar...')
+    input(f'Pressione Enter para continuar...')
     clear_screen()
     menu()
 
 # Funções de cálculo
 def I1_I2(): # Função para calcular I1 e I2
-    I0 = Decimal(input(f"Digite o valor de {Fore.GREEN}I0{Fore.RESET} em {Fore.BLUE}W/cm²{Fore.RESET}: "))
-    t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
-    t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
+    I0 = Decimal(input(f"Digite o valor de I0 em W/cm²: "))
+    t1 = Decimal(input(f"\nDigite o valor de θ1: "))
+    t2 = Decimal(input(f"\nDigite o valor de θ2: "))
 
     I1 = I0 / 2
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
 
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
+    print(f"\n-----------------------------------------------")
+    print(f"\nO valor de I1 é: {I1:.3e} W/cm²\n")
+    print(f"O valor de I2 é: {I2:.3e} W/cm²")
+    print(f"\n-----------------------------------------------")
     
 def I0_I2(): # Função para calcular I0 e I2
-    I1 = Decimal(input(f"Digite o valor de {Fore.GREEN}I1{Fore.RESET} em {Fore.BLUE}W/cm²{Fore.RESET}: "))
-    t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
-    t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
+    I1 = Decimal(input(f"Digite o valor de I1 em W/cm²: "))
+    t1 = Decimal(input(f"\nDigite o valor de θ1: "))
+    t2 = Decimal(input(f"\nDigite o valor de θ2: "))
 
     I0 = I1 * 2
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
 
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
+    print(f"\n-----------------------------------------------")
+    print(f"\nO valor de I0 é: {I0:.3e} W/cm²\n")
+    print(f"O valor de I2 é: {I2:.3e} W/cm²")
+    print(f"\n-----------------------------------------------")
 
 def I0_I1(): # Função para calcular I0 e I1
-    I2 = Decimal(input(f"Digite o valor de {Fore.GREEN}I2{Fore.RESET} em {Fore.BLUE}W/cm²{Fore.RESET}: "))
-    t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
-    t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
+    I2 = Decimal(input(f"Digite o valor de I2 em W/cm²: "))
+    t1 = Decimal(input(f"\nDigite o valor de θ1: "))
+    t2 = Decimal(input(f"\nDigite o valor de θ2: "))
 
     I0 = 2 * I2 / Decimal(math.cos(math.radians(t2 - t1))**2)
     I1 = I0 / 2
 
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
+    print(f"\n-----------------------------------------------")
+    print(f"\nO valor de I0 é: {I0:.3e} W/cm²\n")
+    print(f"O valor de I1 é: {I1:.3e} W/cm²")
+    print(f"\n-----------------------------------------------")
 
 def I1_I2_I3(): # Função para calcular I1, I2 e I3
-    I0 = Decimal(input(f"Digite o valor de {Fore.GREEN}I0 em {Fore.BLUE}W/cm²{Fore.RESET}: "))
-    t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
-    t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
-    t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
+    I0 = Decimal(input(f"Digite o valor de I0 em W/cm²: "))
+    t1 = Decimal(input(f"\nDigite o valor de θ1: "))
+    t2 = Decimal(input(f"\nDigite o valor de θ2: "))
+    t3 = Decimal(input(f"\nDigite o valor de θ3: "))
 
     I1 = I0 / 2
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
     I3 = I2 * Decimal(math.cos(math.radians(t3 - t2))**2)
 
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I3{Fore.RESET} é: {Fore.MAGENTA}{I3:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
+    print(f"\n-----------------------------------------------")
+    print(f"\nO valor de I1 é: {I1:.3e} W/cm²\n")
+    print(f"O valor de I2 é: {I2:.3e} W/cm²\n")
+    print(f"O valor de I3 é: {I3:.3e} W/cm²")
+    print(f"\n-----------------------------------------------")
 
 def I0_I2_I3(): # Função para calcular I0, I2 e I3
-    I1 = Decimal(input(f"Digite o valor de {Fore.GREEN}I1 em {Fore.BLUE}W/cm²{Fore.RESET}: "))
-    t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
-    t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
-    t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
+    I1 = Decimal(input(f"Digite o valor de I1 em W/cm²: "))
+    t1 = Decimal(input(f"\nDigite o valor de θ1: "))
+    t2 = Decimal(input(f"\nDigite o valor de θ2: "))
+    t3 = Decimal(input(f"\nDigite o valor de θ3: "))
 
     I0 = 2 * I1
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
     I3 = I2 * Decimal(math.cos(math.radians(t3 - t2))**2)
 
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I3{Fore.RESET} é: {Fore.MAGENTA}{I3:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
+    print(f"\n-----------------------------------------------")
+    print(f"\nO valor de I0 é: {I0:.3e} W/cm²\n")
+    print(f"O valor de I2 é: {I2:.3e} W/cm²\n")
+    print(f"O valor de I3 é: {I3:.3e} W/cm²")
+    print(f"\n-----------------------------------------------")
 
 def I0_I1_I3(): # Função para calcular I0, I1 e I3
-    I2 = Decimal(input(f"Digite o valor de {Fore.GREEN}I2{Fore.RESET} em {Fore.BLUE}W/cm²{Fore.RESET}: "))
-    t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
-    t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
-    t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
+    I2 = Decimal(input(f"Digite o valor de I2 em W/cm²: "))
+    t1 = Decimal(input(f"\nDigite o valor de θ1: "))
+    t2 = Decimal(input(f"\nDigite o valor de θ2: "))
+    t3 = Decimal(input(f"\nDigite o valor de θ3: "))
 
     I0 = 2 * I2 / Decimal(math.cos(math.radians(t2 - t1))**2)
     I1 = I0 / 2
     I3 = I2 * Decimal(math.cos(math.radians(t3 - t2))**2)
 
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I3{Fore.RESET} é: {Fore.MAGENTA}{I3:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
+    print(f"\n-----------------------------------------------")
+    print(f"\nO valor de I0 é: {I0:.3e} W/cm²\n")
+    print(f"O valor de I1 é: {I1:.3e} W/cm²\n")
+    print(f"O valor de I3 é: {I3:.3e} W/cm²\n")
+    print(f"-----------------------------------------------")
 
 def I0_I1_I2(): # Função para calcular I0, I1 e I2
-    I3 = Decimal(input(f"Digite o valor de {Fore.GREEN}I3{Fore.RESET} em {Fore.BLUE}W/cm²{Fore.RESET}: "))
-    t1 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ1{Fore.RESET}: "))
-    t2 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ2{Fore.RESET}: "))
-    t3 = Decimal(input(f"\nDigite o valor de {Fore.RED}θ3{Fore.RESET}: "))
+    I3 = Decimal(input(f"Digite o valor de I3 em W/cm²: "))
+    t1 = Decimal(input(f"\nDigite o valor de θ1: "))
+    t2 = Decimal(input(f"\nDigite o valor de θ2: "))
+    t3 = Decimal(input(f"\nDigite o valor de θ3: "))
 
     I0 = 2 * I3 / Decimal(math.cos(math.radians(t2 - t1)) **2) / Decimal(math.cos(math.radians(t3 - t2))**2)
     I1 = I0 / 2
     I2 = I1 * Decimal(math.cos(math.radians(t2 - t1))**2)
 
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-    print(f"\nO valor de {Fore.GREEN}I0{Fore.RESET} é: {Fore.MAGENTA}{I0:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I1{Fore.RESET} é: {Fore.MAGENTA}{I1:.3e}{Fore.BLUE} W/cm²{Fore.RESET}\n")
-    print(f"O valor de {Fore.GREEN}I2{Fore.RESET} é: {Fore.MAGENTA}{I2:.3e}{Fore.BLUE} W/cm²{Fore.RESET}")
-    print(f"\n{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
+    print(f"\n-----------------------------------------------")
+    print(f"\nO valor de I0 é: {I0:.3e} W/cm²\n")
+    print(f"O valor de I1 é: {I1:.3e} W/cm²\n")
+    print(f"O valor de I2 é: {I2:.3e} W/cm²")
+    print(f"\n-----------------------------------------------")
 
 # Funções menu
 
 def menu_2polarizadores(): # Função para o menu de polarizadores
-    print(f'{Fore.BLUE}Opções:{Fore.RESET}\n')
-    print(f"{Fore.BLUE}1 - {Fore.GREEN}Entrada:{Fore.RESET} θ1, θ2 e {Fore.MAGENTA}I0")
-    print(f"{Fore.RED}Saida:{Fore.RESET} I1 e I2\n")
-    print(f"{Fore.BLUE}2 - {Fore.GREEN}Entrada:{Fore.RESET} θ1, θ2 e {Fore.MAGENTA}I1")
-    print(f"{Fore.RED}Saida:{Fore.RESET} I0 e I2\n")
-    print(f"{Fore.BLUE}3 - {Fore.GREEN}Entrada:{Fore.RESET} θ1, θ2 e {Fore.MAGENTA}I2")
-    print(f"{Fore.RED}Saida:{Fore.RESET} I0 e I1\n")
-    print(f"{Fore.BLUE}0 -{Fore.RESET} Voltar\n")
-    option = input(f'{Fore.BLUE}Escolha uma opção:{Fore.RESET} ')
+    print(f'Opções:\n')
+    print(f"1 - Entrada: θ1, θ2 e I0")
+    print(f"Saida: I1 e I2\n")
+    print(f"2 - Entrada: θ1, θ2 e I1")
+    print(f"Saida: I0 e I2\n")
+    print(f"3 - Entrada: θ1, θ2 e I2")
+    print(f"Saida: I0 e I1\n")
+    print(f"0 - Voltar\n")
+    option = input(f'Escolha uma opção: ')
 
     if option == '1':
         clear_screen()
-        print(f'Cálculo de {Fore.GREEN}I1{Fore.RESET} e {Fore.GREEN}I2{Fore.RESET}...\n')
+        print(f'Cálculo de I1 e I2...\n')
         I1_I2()
         clear()
 
     elif option == '2':
         clear_screen()
-        print(f'Cálculo de {Fore.GREEN}I0{Fore.RESET} e {Fore.GREEN}I2{Fore.RESET}...\n')
+        print(f'Cálculo de I0 e I2...\n')
         I0_I2()
         clear()
 
     elif option == '3':
         clear_screen()
-        print(f'Cálculo de {Fore.GREEN}I0{Fore.RESET} e {Fore.GREEN}I1{Fore.RESET}...\n')
+        print(f'Cálculo de I0 e I1...\n')
         I0_I1()
         clear()
 
@@ -189,36 +193,36 @@ def menu_2polarizadores(): # Função para o menu de polarizadores
 
 
 def menu_3polarizadores(): # Função para o menu de polarizadores
-    print(f'{Fore.BLUE}Opções:{Fore.RESET}\n')
-    print(f"{Fore.BLUE}1 -{Fore.GREEN} Entrada:{Fore.RESET} θ1, θ2, θ3 e {Fore.MAGENTA}I0")
-    print(f"{Fore.RED}Saida:{Fore.RESET} I1, I2 e I3\n")
-    print(f"{Fore.BLUE}2 -{Fore.GREEN} Entrada:{Fore.RESET} θ1, θ2, θ3 e {Fore.MAGENTA}I1")
-    print(f"{Fore.RED}Saida:{Fore.RESET} I0, I2 e I3\n")
-    print(f"{Fore.BLUE}3 -{Fore.GREEN} Entrada:{Fore.RESET} θ1, θ2, θ3 e {Fore.MAGENTA}I2")
-    print(f"{Fore.RED}Saida:{Fore.RESET} I0, I1 e I3\n")
-    print(f"{Fore.BLUE}4 -{Fore.GREEN} Entrada:{Fore.RESET} θ1, θ2, θ3 e {Fore.MAGENTA}I3")
-    print(f"{Fore.RED}Saida:{Fore.RESET} I0, I1 e I2\n")
-    print(f"{Fore.BLUE}0 -{Fore.RESET} Voltar\n")
-    option = input(f'{Fore.GREEN}Escolha uma opção:{Fore.RESET} ')
+    print(f'Opções:\n')
+    print(f"1 - Entrada: θ1, θ2, θ3 e I0")
+    print(f"Saida: I1, I2 e I3\n")
+    print(f"2 - Entrada: θ1, θ2, θ3 e I1")
+    print(f"Saida: I0, I2 e I3\n")
+    print(f"3 - Entrada: θ1, θ2, θ3 e I2")
+    print(f"Saida: I0, I1 e I3\n")
+    print(f"4 - Entrada: θ1, θ2, θ3 e I3")
+    print(f"Saida: I0, I1 e I2\n")
+    print(f"0 - Voltar\n")
+    option = input(f'Escolha uma opção: ')
 
     if option == '1':
         clear_screen()
-        print(f'Cálculo de {Fore.GREEN}I1{Fore.RESET}, {Fore.GREEN}I2{Fore.RESET} e {Fore.GREEN}I3{Fore.RESET}...\n')
+        print(f'Cálculo de I1, I2 e I3...\n')
         I1_I2_I3()
         clear()
     elif option == '2':
         clear_screen()
-        print(f'Cálculo de {Fore.GREEN}I0{Fore.RESET}, {Fore.GREEN}I2{Fore.RESET} e {Fore.GREEN}I3{Fore.RESET}...\n')
+        print(f'Cálculo de I0, I2 e I3...\n')
         I0_I2_I3()
         clear()
     elif option == '3':
         clear_screen()
-        print(f'Cálculo de {Fore.GREEN}I0{Fore.RESET}, {Fore.GREEN}I1{Fore.RESET} e {Fore.GREEN}I3{Fore.RESET}...\n')
+        print(f'Cálculo de I0, I1 e I3...\n')
         I0_I1_I3()
         clear()
     elif option == '4':
         clear_screen()
-        print(f'Cálculo de {Fore.GREEN}I0{Fore.RESET}, {Fore.GREEN}I1{Fore.RESET} e {Fore.GREEN}I2{Fore.RESET}...\n')
+        print(f'Cálculo de I0, I1 e I2...\n')
         I0_I1_I2()
         clear()
     elif option == '0':
@@ -229,11 +233,11 @@ def menu_3polarizadores(): # Função para o menu de polarizadores
         print(f'Opção inválida. Escolha uma opção válida.')
 
 def menu(): # Função para o menu de cálculos
-    print(f'{Fore.GREEN}Opções:{Fore.RESET}\n')
-    print(f'{Fore.GREEN}1 -{Fore.RESET} Voltar\n')
-    print(f'{Fore.GREEN}2 -{Fore.RESET} Dois polarizadores\n')
-    print(f'{Fore.GREEN}3 -{Fore.RESET} Três polarizadores\n')
-    option = input(f'{Fore.BLUE}Escolha uma opção:{Fore.RESET} ')
+    print(f'Opções:\n')
+    print(f'1 - Voltar\n')
+    print(f'2 - Dois polarizadores\n')
+    print(f'3 - Três polarizadores\n')
+    option = input(f'Escolha uma opção: ')
 
     if option == '2':
         print('Redirecionando para o menu de dois polarizadores...')
@@ -257,27 +261,27 @@ while True:
     clear_screen()
 
     if teste == 0:
-        print(f"Tópicos de {Fore.YELLOW}Óptica{Fore.RESET} e {Fore.RED}Física Moderna")
-        print(f"{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-        print(f"{Fore.MAGENTA}-> {Fore.RESET}Equipe {Fore.MAGENTA}3")
-        print(f"{Fore.BLUE}✔{Fore.RESET} Marjorie Luize Martins Costa, {Fore.MAGENTA}RA:{Fore.RESET} 24223084-5")
-        print(f"{Fore.BLUE}✔{Fore.RESET} Matheus Ferreira de Freitas, {Fore.MAGENTA}RA:{Fore.RESET} 24123080-4")
-        print(f"{Fore.BLUE}✔{Fore.RESET} Henrique Hodel Babler, {Fore.MAGENTA}RA:{Fore.RESET} 24123079-6")
-        print(f"{Fore.MAGENTA}!{Fore.RESET} Turma {Fore.MAGENTA}725")
-        print(f"{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-        print(f"{Fore.YELLOW}ℹ️{Fore.RESET} O programa desenvolvido permite calcular a intensidade da luz após passar por polarizadores em um sistema óptico. Utilizando os ângulos de transmissão fornecidos pelo usuário, ele determina como a intensidade da luz não polarizada inicial é modificada ao atravessar até três polarizadores. Através de fórmulas baseadas nas leis de Malus e na física da polarização da luz, o programa calcula e exibe as intensidades resultantes, ajudando a entender o comportamento da luz em sistemas de polarização.")
-        print(f"{Fore.CYAN}-----------------------------------------------{Fore.RESET}")
-        print(f'Pressione {Fore.GREEN}Enter{Fore.RESET} para continuar...')
+        print(f"Tópicos de Óptica e Física Moderna")
+        print(f"-----------------------------------------------")
+        print(f"-> Equipe 3")
+        print(f"✔ Marjorie Luize Martins Costa, RA: 24223084-5")
+        print(f"✔ Matheus Ferreira de Freitas, RA: 24123080-4")
+        print(f"✔ Henrique Hodel Babler, RA: 24123079-6")
+        print(f"! Turma 725")
+        print(f"-----------------------------------------------")
+        print(f"ℹ️ O programa desenvolvido permite calcular a intensidade da luz após passar por polarizadores em um sistema óptico. Utilizando os ângulos de transmissão fornecidos pelo usuário, ele determina como a intensidade da luz não polarizada inicial é modificada ao atravessar até três polarizadores. Através de fórmulas baseadas nas leis de Malus e na física da polarização da luz, o programa calcula e exibe as intensidades resultantes, ajudando a entender o comportamento da luz em sistemas de polarização.")
+        print(f"-----------------------------------------------")
+        print(f'Pressione Enter para continuar...')
         input() 
         teste = Decimal(1)
 
     clear_screen()
-    print(f'{Fore.MAGENTA}Opções:{Fore.RESET}\n')
-    print(f'{Fore.MAGENTA}1 -{Fore.RESET} Cálculos\n')
+    print(f'Opções:\n')
+    print(f'1 - Cálculos\n')
     # print('2 - Conversores')
     # print('2 - Limpar variáveis')
-    print(f'{Fore.MAGENTA}0 -{Fore.RESET} Sair\n')
-    option = input(f'{Fore.GREEN}Escolha uma opção: {Fore.RESET}\n')
+    print(f'0 - Sair\n')
+    option = input(f'Escolha uma opção: \n')
 
     if option == '1':
         print('Redirecionando para o menu de cálculos...\n')
@@ -297,6 +301,6 @@ while True:
     else:
         print('Opção inválida. Escolha uma opção válida.')
 
-    input(f'Pressione {Fore.GREEN}Enter{Fore.RESET} para continuar...')
+    input(f'Pressione Enter para continuar...')
 
 print('Finalizando...')
